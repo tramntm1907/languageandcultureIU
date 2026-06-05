@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Language and Culture Learning Ecosystem</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="navbar">
+      <div class="brand">
+        <span class="brand-mark">LC</span>
+        <span>Language & Culture</span>
+      </div>
+      <div class="nav-links">
+        <a href="#modules">Modules</a>
+        <a href="#library">Library</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#certificate">Certificate</a>
+      </div>
+    </nav>
+
+    <section class="hero-content">
+      <div class="eyebrow">Interactive Course Portal</div>
+      <h1>Explore how language shapes culture, identity, power, and belonging.</h1>
+      <p>
+        A self-access learning ecosystem where students watch curated videos, read short academic materials,
+        complete quizzes, track progress, and earn a certificate.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#modules">Start Learning</a>
+        <a class="btn secondary" href="#quiz">Take Quiz</a>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="dashboard">
+      <div class="glass-card profile-card">
+        <h2>Student Dashboard</h2>
+        <p>Enter your name to personalize progress and certificate.</p>
+        <div class="input-row">
+          <input id="studentName" type="text" placeholder="Full name" />
+          <button onclick="saveName()">Save</button>
+        </div>
+        <p id="savedName" class="muted"></p>
+      </div>
+
+      <div class="glass-card stat">
+        <span id="completedCount">0/4</span>
+        <p>Modules completed</p>
+      </div>
+
+      <div class="glass-card stat">
+        <span id="bestScore">0%</span>
+        <p>Best quiz score</p>
+      </div>
+    </section>
+
+    <section id="modules" class="section">
+      <div class="section-heading">
+        <span class="eyebrow dark">Course Pathway</span>
+        <h2>Learning Modules</h2>
+        <p>Each module includes a video space, short reading, and reflection task.</p>
+      </div>
+
+      <div class="module-grid">
+        <article class="module-card">
+          <div class="module-image image-1"></div>
+          <div class="module-body">
+            <span class="tag">Module 1</span>
+            <h3>Language, Culture, and Identity</h3>
+            <p>How language carries memory, social belonging, and identity.</p>
+            <div class="video-box" data-video="https://www.youtube.com/embed/J_EQDtpYSNM">
+              <iframe src="https://www.youtube.com/embed/J_EQDtpYSNM" title="Language and Culture Video" allowfullscreen></iframe>
+            </div>
+            <a class="text-link" href="materials/module1.html">Read materials →</a>
+            <button onclick="markComplete('Module 1')">Mark Complete</button>
+          </div>
+        </article>
+
+        <article class="module-card">
+          <div class="module-image image-2"></div>
+          <div class="module-body">
+            <span class="tag">Module 2</span>
+            <h3>World Englishes and Global Englishes</h3>
+            <p>English as a pluricentric language shaped by global users.</p>
+            <div class="video-box" data-video="https://www.youtube.com/embed/2_q9b9YqGRY">
+              <iframe src="https://www.youtube.com/embed/2_q9b9YqGRY" title="World Englishes Video" allowfullscreen></iframe>
+            </div>
+            <a class="text-link" href="materials/module2.html">Read materials →</a>
+            <button onclick="markComplete('Module 2')">Mark Complete</button>
+          </div>
+        </article>
+
+        <article class="module-card">
+          <div class="module-image image-3"></div>
+          <div class="module-body">
+            <span class="tag">Module 3</span>
+            <h3>Language Ideology and Power</h3>
+            <p>Why some accents, languages, and varieties are treated as more legitimate than others.</p>
+            <div class="video-box placeholder">
+              <div>
+                <strong>Instructor Video Slot</strong>
+                <p>Replace this with your YouTube embed link.</p>
+              </div>
+            </div>
+            <a class="text-link" href="materials/module3.html">Read materials →</a>
+            <button onclick="markComplete('Module 3')">Mark Complete</button>
+          </div>
+        </article>
+
+        <article class="module-card">
+          <div class="module-image image-4"></div>
+          <div class="module-body">
+            <span class="tag">Module 4</span>
+            <h3>Minority Languages and Revitalization</h3>
+            <p>Language endangerment, preservation, community agency, and digital storytelling.</p>
+            <div class="video-box placeholder">
+              <div>
+                <strong>Student Project Video Slot</strong>
+                <p>Add student videos or presentation links here.</p>
+              </div>
+            </div>
+            <a class="text-link" href="materials/module4.html">Read materials →</a>
+            <button onclick="markComplete('Module 4')">Mark Complete</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section two-column">
+      <div id="library" class="panel">
+        <span class="eyebrow dark">Reading Library</span>
+        <h2>Course Materials</h2>
+        <p>Students can read short, focused materials before completing the quiz.</p>
+        <ul class="resource-list">
+          <li><a href="materials/module1.html">Language, Culture, and Identity</a></li>
+          <li><a href="materials/module2.html">World Englishes and Global Englishes</a></li>
+          <li><a href="materials/module3.html">Language Ideology and Power</a></li>
+          <li><a href="materials/module4.html">Minority Languages and Revitalization</a></li>
+        </ul>
+      </div>
+
+      <div class="panel progress-panel">
+        <span class="eyebrow dark">Progress</span>
+        <h2>Your Learning Record</h2>
+        <div class="progress-bar">
+          <div id="progressFill"></div>
+        </div>
+        <p id="progressText">No modules completed yet.</p>
+        <button class="danger" onclick="resetProgress()">Reset Progress</button>
+      </div>
+    </section>
+
+    <section id="quiz" class="section quiz-section">
+      <div class="section-heading">
+        <span class="eyebrow dark">Assessment</span>
+        <h2>Final Quiz</h2>
+        <p>Students need at least 70% to unlock the certificate.</p>
+      </div>
+
+      <form id="quizForm" class="quiz-card">
+        <div class="question">
+          <p><strong>1.</strong> Language ideology refers to:</p>
+          <label><input type="radio" name="q1" value="a"> personal preferences with no social meaning</label>
+          <label><input type="radio" name="q1" value="b"> beliefs about language linked to identity, value, and power</label>
+          <label><input type="radio" name="q1" value="c"> pronunciation practice only</label>
+        </div>
+
+        <div class="question">
+          <p><strong>2.</strong> Global Englishes challenges the belief that:</p>
+          <label><input type="radio" name="q2" value="a"> English belongs only to native speakers</label>
+          <label><input type="radio" name="q2" value="b"> English can be used internationally</label>
+          <label><input type="radio" name="q2" value="c"> speakers adapt language across contexts</label>
+        </div>
+
+        <div class="question">
+          <p><strong>3.</strong> Standard language ideology usually:</p>
+          <label><input type="radio" name="q3" value="a"> treats all language varieties equally</label>
+          <label><input type="radio" name="q3" value="b"> presents one variety as more correct or legitimate than others</label>
+          <label><input type="radio" name="q3" value="c"> removes all language hierarchies</label>
+        </div>
+
+        <div class="question">
+          <p><strong>4.</strong> A minority language preservation project should ideally include:</p>
+          <label><input type="radio" name="q4" value="a"> only statistics and no community voices</label>
+          <label><input type="radio" name="q4" value="b"> community perspectives, domains of use, and preservation efforts</label>
+          <label><input type="radio" name="q4" value="c"> only grammar explanations</label>
+        </div>
+
+        <div class="question">
+          <p><strong>5.</strong> Intelligibility in Global Englishes means:</p>
+          <label><input type="radio" name="q5" value="a"> sounding exactly like a native speaker</label>
+          <label><input type="radio" name="q5" value="b"> being understood in communication</label>
+          <label><input type="radio" name="q5" value="c"> avoiding all local features</label>
+        </div>
+
+        <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        <button type="button" class="secondary-button" onclick="resetQuiz()">Clear Answers</button>
+      </form>
+
+      <div id="quizResult" class="result-box hidden"></div>
+    </section>
+
+    <section id="certificate" class="section certificate-section">
+      <div class="section-heading">
+        <span class="eyebrow dark">Achievement</span>
+        <h2>Certificate of Completion</h2>
+        <p>Generated after students pass the final quiz.</p>
+      </div>
+
+      <button onclick="generateCertificate()">Generate Certificate</button>
+
+      <div id="certificateBox" class="certificate hidden">
+        <div class="cert-border">
+          <p class="cert-small">Language and Culture Learning Ecosystem</p>
+          <h1>Certificate of Completion</h1>
+          <p>This is awarded to</p>
+          <h2 id="certName">Student Name</h2>
+          <p>for successfully completing the course learning path and final quiz.</p>
+          <div class="cert-meta">
+            <span id="certScore">Score: --</span>
+            <span id="certDate">Date: --</span>
+          </div>
+          <div class="signature-row">
+            <div>
+              <span class="signature-line"></span>
+              <p>Course Instructor</p>
+            </div>
+            <div>
+              <span class="signature-line"></span>
+              <p>Language & Culture Hub</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="secondary-button" onclick="window.print()">Print / Save Certificate as PDF</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Language and Culture Learning Ecosystem | Designed for university teaching</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
